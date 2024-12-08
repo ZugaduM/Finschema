@@ -1,8 +1,28 @@
+"""
+Модуль для создания и сохранения графиков биржевых данных.
+
+Обеспечивает визуализацию ценовых данных и технических индикаторов
+с помощью библиотеки matplotlib.
+
+Функции:
+    create_and_save_plot(): Создает и сохраняет график цен акций
+"""
+
 import matplotlib.pyplot as plt
 import pandas as pd
 
 
 def create_and_save_plot(data, ticker, period, filename=None):
+    """
+    Создает и сохраняет график цен акций.
+
+    Args:
+        data (pandas.DataFrame): DataFrame с данными акций
+        ticker (str): Тикер акции
+        period (str): Период времени данных
+        filename (str, optional): Путь для сохранения файла
+    """
+
     plt.figure(figsize=(10, 6))
 
     if 'Date' not in data:
