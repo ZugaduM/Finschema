@@ -18,6 +18,7 @@
 - [Структура проекта](#struct)
 - [Примеры тикеров](#example)
 - [Приложение Пример графика](#add_1)
+- [Пример вывода в консоль](#add_2)
 
 ## <img src="https://github.com/user-attachments/assets/06f711e2-fc6b-4d17-9abc-17c5991280cf" width="64"> <a id='intro'>Введение</a>
 Простое приложение на Python для получения, анализа и визуализации биржевых данных с использованием API Yahoo Finance.
@@ -76,6 +77,10 @@ python main.py
 
 ## <a id='add_1'>Пример графика</a>
 <img src="https://github.com/ZugaduM/Finschema/blob/main/.img/AAPL_1mo_stock_price_chart.png">
+
+## <a id='add_2'>Пример вывода в консоль</a>
+![image](https://github.com/user-attachments/assets/05b570e9-5828-4f69-8f71-7fd386b8a083)
+
 
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=zugadum&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
