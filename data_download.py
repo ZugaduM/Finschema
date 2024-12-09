@@ -56,3 +56,24 @@ def calculate_and_display_average_price(data):
 
     average_price = data['Close'].mean()
     print(f"Средняя цена закрытия: {average_price:.2f}")
+
+
+def notify_if_strong_fluctuations(data, threshold):
+    """
+    Анализирует колебания цены акций и уведомляет о сильных изменениях.
+
+    Args:
+        data (pandas.DataFrame): DataFrame с данными акций
+        threshold (float): Пороговое значение колебаний в процентах
+    """
+    max_price = data['Close'].max()
+    min_price = data['Close'].min()
+
+    # Вычисляем процент изменения
+    price_change_percent = ((max_price - min_price) / min_price) * 100
+
+    if price_change_percent > threshold:
+        print(f"ВНИМАНИЕ: Обнаружено сильное колебание цены!")
+        print(f"Максимальная цена: {max_price:.2f}")
+        print(f"Минимальная цена: {min_price:.2f}")
+        print(f"Процент изменения: {price_change_percent:.2f}%")
