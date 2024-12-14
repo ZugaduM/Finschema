@@ -11,6 +11,7 @@
 """
 
 import yfinance as yf
+import os
 
 
 def fetch_stock_data(ticker, period='1mo'):
@@ -77,3 +78,23 @@ def notify_if_strong_fluctuations(data, threshold):
         print(f"Максимальная цена: {max_price:.2f}")
         print(f"Минимальная цена: {min_price:.2f}")
         print(f"Процент изменения: {price_change_percent:.2f}%")
+
+
+def export_data_to_csv(data, filename):
+    """
+    Экспортирует данные об акциях в CSV файл.
+
+    Args:
+        data (pandas.DataFrame): DataFrame с данными акций
+        filename (str): Имя файла для сохранения данных
+    """
+    # Создаем директорию export если её нет
+    if not os.path.exists('export'):
+        os.makedirs('export')
+
+    # Формируем полный путь к файлу
+    filepath = os.path.join('export', filename)
+
+    # Сохраняем данные в CSV
+    data.to_csv(filepath)
+    print(f"Данные успешно экспортированы в файл: {filepath}")
