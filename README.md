@@ -29,6 +29,7 @@
 - Вычисление средней цены закрытия
 - Построение графиков цен акций
 - Сохранение графиков в формате PNG
+- Экспорт данных в CSV формат
 
 ## <img src="https://github.com/user-attachments/assets/31f870e1-c478-469c-b3c4-57e4dbeeea98" width="64"> <a id='req'>Требования</a>
 - Python 3.7+
@@ -36,6 +37,8 @@
 - pandas 
 - matplotlib
 - numpy
+
+Полный перечень требуемых для работы модуля библиотек содержится в <a href="https://github.com/ZugaduM/Finschema/blob/main/requirements.txt">requirements.txt</a>
 
 ## <img src="https://github.com/user-attachments/assets/23612cb6-7df8-44d6-a1a6-fdca47c3de19" width="64"> <a id='install'>Установка</a>
 
