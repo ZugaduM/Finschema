@@ -10,6 +10,7 @@
 
 import matplotlib.pyplot as plt
 import pandas as pd
+import os
 
 
 def create_and_save_plot(data, ticker, period, filename=None):
@@ -45,7 +46,14 @@ def create_and_save_plot(data, ticker, period, filename=None):
     plt.legend()
 
     if filename is None:
-        filename = f".img/{ticker}_{period}_stock_price_chart.png"
+        filename = f"{ticker}_{period}_stock_price_chart.png"
 
-    plt.savefig(filename)
-    print(f"График сохранен как {filename}")
+    # Создаем директорию img если её нет
+    if not os.path.exists('img'):
+        os.makedirs('img')
+
+    # Формируем полный путь к файлу
+    filepath = os.path.join('img', filename)
+
+    plt.savefig(filepath)
+    print(f"График сохранен в директории 'img' под именем {filename}")
