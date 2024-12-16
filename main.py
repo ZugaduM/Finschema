@@ -8,8 +8,6 @@
     main(): Основная функция, управляющая работой приложения
 """
 
-from numpy.ma.extras import average
-
 import data_download as dd
 import data_plotting as dplt
 
@@ -30,23 +28,26 @@ def main():
     period = input("Введите период для данных (например, '1mo' для одного месяца): ")
     threshold = float(input("Введите пороговое значение колебаний в процентах (например, 5): "))
 
-    # Fetch stock data
+    # Получение данных
     stock_data = dd.fetch_stock_data(ticker, period)
 
-    # Check for strong fluctuations
-    dd.notify_if_strong_fluctuations(stock_data, threshold)
-
-    # Calculate and display average price
-    dd.calculate_and_display_average_price(stock_data)
-
-    # Add moving average to the data
+    # Добавление средней скользящей
     stock_data = dd.add_moving_average(stock_data)
 
-    # Export data to CSV
+    # Добавление RSI индикатора
+    stock_data = dd.calculate_rsi(stock_data)
+
+    # Проверка на сильные колебания
+    dd.notify_if_strong_fluctuations(stock_data, threshold)
+
+    # Вычисление средней цены закрытия
+    dd.calculate_and_display_average_price(stock_data)
+
+    # Экспорт данных в CSV
     filename = f"{ticker}_{period}_stock_data.csv"
     dd.export_data_to_csv(stock_data, filename)
 
-    # Plot the data
+    # Отображение графиков
     dplt.create_and_save_plot(stock_data, ticker, period)
 
 
