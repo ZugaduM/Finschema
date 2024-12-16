@@ -98,3 +98,22 @@ def export_data_to_csv(data, filename):
     # Сохраняем данные в CSV
     data.to_csv(filepath)
     print(f"Данные успешно экспортированы в файл: {filepath}")
+
+def calculate_rsi(data, period=14):
+    """
+    Рассчитывает индикатор RSI (Relative Strength Index).
+
+    Args:
+        data (pandas.DataFrame): DataFrame с данными акций
+        period (int): Период для расчета RSI
+
+    Returns:
+        pandas.DataFrame: DataFrame с добавленным RSI
+    """
+    delta = data['Close'].diff()
+    profit = (delta.where(delta > 0, 0)).rolling(window=period).mean()
+    waste  = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
+
+    rs = profit / waste
+    data['RSI'] = 100 - (100 / (1 + rs))
+    return data
