@@ -14,20 +14,24 @@ import yfinance as yf
 import os
 
 
-def fetch_stock_data(ticker, period='1mo'):
+def fetch_stock_data(ticker, period=None, start_date=None, end_date=None):
     """
-    Загружает исторические данные акций.
+    Загружает исторические данные акций за указанный период или диапазон дат.
 
     Args:
         ticker (str): Тикер акции
-        period (str): Период времени для загрузки данных
+        period (str, optional): Предустановленный период
+        start_date (str, optional): Дата начала в формате YYYY-MM-DD
+        end_date (str, optional): Дата окончания в формате YYYY-MM-DD
 
     Returns:
         pandas.DataFrame: DataFrame с историческими данными
     """
-
     stock = yf.Ticker(ticker)
-    data = stock.history(period=period)
+    if start_date and end_date:
+        data = stock.history(interval='1d', start=start_date, end=end_date)
+    else:
+        data = stock.history(period=period)
     return data
 
 
