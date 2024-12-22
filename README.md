@@ -80,7 +80,7 @@ python main.py
 - TSLA - Tesla Inc
 
 ## <a id='add_1'>Пример графика</a>
-<img src="https://github.com/ZugaduM/Finschema/blob/main/.img/AAPL_1mo_stock_price_chart.png">
+<img src="https://github.com/ZugaduM/Finschema/blob/main/img/aapl_3mo_stock_price_chart.png">
 
 ## <a id='add_2'>Пример вывода в консоль</a>
 ![image](https://github.com/user-attachments/assets/05b570e9-5828-4f69-8f71-7fd386b8a083)
