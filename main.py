@@ -11,6 +11,7 @@
 import data_download as dd
 import data_plotting as dplt
 from datetime import datetime
+import matplotlib.pyplot as plt
 
 
 def validate_date(date_string):
@@ -28,6 +29,21 @@ def validate_date(date_string):
         return True
     except ValueError:
         return False
+
+
+def get_available_styles():
+    """
+    Получает список стилей графиков из matplotlib.
+
+    Returns:
+        list: Список из 10 доступных стилей
+    """
+    # Получаем все доступные стили
+    all_styles = plt.style.available
+
+    # Берем первые 10 стилей
+    popular_styles = ['default'] + all_styles[:9]
+    return popular_styles
 
 
 def main():
@@ -61,6 +77,19 @@ def main():
 
     threshold = float(input("Введите пороговое значение колебаний в процентах (например, 5): "))
 
+    # Добавляем выбор стиля графика
+    print("\nДоступные стили оформления графика:")
+    styles = get_available_styles()
+    for i, style in enumerate(styles, 1):
+        print(f"{i}. {style}")
+
+    style_choice = input("\nВыберите номер стиля (Enter для стиля по умолчанию): ")
+
+    if style_choice.strip():
+        selected_style = styles[int(style_choice) - 1]
+    else:
+        selected_style = 'default'
+
     # Добавление средней скользящей
     stock_data = dd.add_moving_average(stock_data)
 
@@ -78,7 +107,7 @@ def main():
     dd.export_data_to_csv(stock_data, filename)
 
     # Отображение графиков
-    dplt.create_and_save_plot(stock_data, ticker, period)
+    dplt.create_and_save_plot(stock_data, ticker, period, style=selected_style)
 
 
 if __name__ == "__main__":
