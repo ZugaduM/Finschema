@@ -13,16 +13,20 @@ import pandas as pd
 import os
 
 
-def create_and_save_plot(data, ticker, period, filename=None):
+def create_and_save_plot(data, ticker, period, style='default', filename=None):
     """
-    Создает и сохраняет график цен акций.
+    Создает и сохраняет график цен акций и технических индикаторов.
 
     Args:
         data (pandas.DataFrame): DataFrame с данными акций
         ticker (str): Тикер акции
         period (str): Период времени данных
+        style (str): Стиль оформления графика
         filename (str, optional): Путь для сохранения файла
     """
+    # Применяем выбранный стиль
+    if style != 'default':
+        plt.style.use(style)
 
     # Создаем подграфики: основной график и RSI
     fig, (ax1, ax2) = plt.subplots(2,
